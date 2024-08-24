@@ -45,7 +45,7 @@ export default function ChatInput(props: ChatInputProps) {
           </FormPrimitive.Control>
         </StyledFormField>
         <FormPrimitive.Submit asChild>
-          <StyledButton active={value !== ""}>
+          <StyledButton $active={value !== ""}>
             <ArrowRight />
           </StyledButton>
         </FormPrimitive.Submit>

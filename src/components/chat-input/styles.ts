@@ -69,7 +69,7 @@ export const StyledTextarea = styled.textarea`
   `)}
 `
 
-export const StyledButton = styled.button<{ active: boolean }>`
+export const StyledButton = styled.button<{ $active: boolean }>`
   all: unset;
   box-sizing: border-box;
   cursor: pointer;
@@ -86,8 +86,8 @@ export const StyledButton = styled.button<{ active: boolean }>`
   transition: 400ms all ease;
 
   /* disabled */
-  pointer-events: ${(props) => (props.active ? "auto" : "none")};
-  opacity: ${(props) => (props.active ? 1 : 0.3)};
+  pointer-events: ${(props) => (props.$active ? "auto" : "none")};
+  opacity: ${(props) => (props.$active ? 1 : 0.3)};
 
   ${hover(css`
     &:hover {
