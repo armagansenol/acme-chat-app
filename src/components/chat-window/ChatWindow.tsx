@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion"
 
 import { ChatMessage } from "@/components/chat-message"
 import { MessageProps } from "@/types"
+import { useScrollToElement } from "@/hooks/useScroll"
 
 export interface ChatWindowProps {
   messages: MessageProps[]
@@ -11,6 +12,8 @@ export interface ChatWindowProps {
 
 export default function ChatWindow(props: ChatWindowProps) {
   const { messages } = props
+
+  const chatEndRef = useScrollToElement<HTMLDivElement>()
 
   return (
     <>
@@ -27,6 +30,7 @@ export default function ChatWindow(props: ChatWindowProps) {
           </AnimatePresence>
         </StyledChatWindow>
       }
+      <div style={{ visibility: "hidden" }} ref={chatEndRef} />
     </>
   )
 }
