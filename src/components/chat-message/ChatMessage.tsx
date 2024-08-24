@@ -15,7 +15,7 @@ const ChatMessage = (props: MessageProps) => {
   }
 
   return (
-    <StyledMessage incoming={incoming}>
+    <StyledMessage $incoming={incoming}>
       {messageContent[type]}
       <StyledTime>{createdAt}</StyledTime>
     </StyledMessage>

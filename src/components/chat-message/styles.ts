@@ -5,8 +5,8 @@ import styled, { css } from "styled-components"
 
 const $padding = 12
 
-export const StyledMessage = styled(Box)<{ incoming: MessageProps["incoming"] }>`
-  background-color: ${(props) => (props.incoming ? "var(--bg-3)" : "var(--bg-4)")};
+export const StyledMessage = styled(Box)<{ $incoming: MessageProps["incoming"] }>`
+  background-color: ${(props) => (props.$incoming ? "var(--bg-3)" : "var(--bg-4)")};
   border-radius: ${mobileVW(10)};
   color: var() (--text-1);
   display: flex;
