@@ -22,10 +22,18 @@ export const StyledChatWindowContainer = styled(Flex)`
     padding: ${desktopVW(50)};
   `)}
 `
+export const StyledOverflowMask = styled(Flex)`
+  flex: 1;
+  border-radius: ${mobileVW(32)};
+  overflow: hidden;
+
+  ${desktop(css`
+    border-radius: ${desktopVW(32)};
+  `)}
+`
 export const StyledMessagesContainer = styled(Flex)`
   align-items: stretch;
   background-color: ${grayDark.gray2};
-  border-radius: ${mobileVW(16)};
   flex-direction: column;
   height: 100%;
   gap: ${mobileVW(20)};
@@ -33,7 +41,6 @@ export const StyledMessagesContainer = styled(Flex)`
   padding: ${mobileVW(16)};
 
   ${desktop(css`
-    border-radius: ${desktopVW(32)};
     gap: ${desktopVW(20)};
     padding: ${desktopVW(16)};
   `)}

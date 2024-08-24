@@ -1,10 +1,16 @@
-import { StyledChatInputContainer, StyledChatRoom, StyledChatWindowContainer, StyledMessagesContainer } from "./styles"
+import {
+  StyledChatInputContainer,
+  StyledChatRoom,
+  StyledChatWindowContainer,
+  StyledMessagesContainer,
+  StyledOverflowMask,
+} from "./styles"
 
 import { useReducer } from "react"
 
 import { ChatInput } from "@/components/chat-input"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { ChatWindow } from "@/components/chat-window"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { chatReducer, initialState } from "@/store/reducers/chat-reducer"
 
 export default function ChatRoom() {
@@ -13,11 +19,13 @@ export default function ChatRoom() {
   return (
     <StyledChatRoom>
       <StyledChatWindowContainer>
-        <ScrollArea>
-          <StyledMessagesContainer>
-            <ChatWindow messages={state.messages} />
-          </StyledMessagesContainer>
-        </ScrollArea>
+        <StyledOverflowMask>
+          <ScrollArea>
+            <StyledMessagesContainer>
+              <ChatWindow messages={state.messages} />
+            </StyledMessagesContainer>
+          </ScrollArea>
+        </StyledOverflowMask>
       </StyledChatWindowContainer>
       <StyledChatInputContainer>
         <ChatInput dispatch={dispatch} />
