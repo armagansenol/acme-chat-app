@@ -1,5 +1,4 @@
-import { mobileBreakpoint } from "@/lib/utils/breakpoints"
-import { desktopHeight, desktopWidth, mobileHeight, mobileWidth } from "@/lib/utils/breakpoints/index"
+import { desktopHeight, desktopWidth, mobileBreakpoint, mobileHeight, mobileWidth } from "@/lib/utils/breakpoints"
 import { css, RuleSet } from "styled-components"
 
 // Utility functions
