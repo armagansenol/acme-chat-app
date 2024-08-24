@@ -15,7 +15,7 @@ import { getCurrentTime } from "@/lib/utils/misc"
 import { ChatAction } from "@/store/reducers/chat-reducer"
 import { MessageType } from "@/types"
 import { AutoComplete } from "@/components/autocomplete"
-import { chatPhrases } from "@/mockData"
+import { chatPhrases } from "@/mock-data"
 import { useAutocomplete } from "@/hooks/useAutoComplete"
 
 export interface ChatInputProps {
