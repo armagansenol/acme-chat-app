@@ -7,7 +7,7 @@ import { Flex } from "@/components/ui/layout"
 
 export const StyledChatRoom = styled(Flex)`
   align-items: stretch;
-  background-color: var(--bg);
+  background-color: var(--bg-1);
   flex-direction: column;
   height: 100%;
   overflow: hidden;
