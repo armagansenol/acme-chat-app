@@ -4,9 +4,17 @@ import * as FormPrimitive from "@radix-ui/react-form"
 import { ArrowRight } from "lucide-react"
 import { ChangeEvent, useRef, useState } from "react"
 
-export interface ChatInputProps {}
+import { getCurrentTime } from "@/lib/utils/misc"
+import { ChatAction } from "@/store/reducers/chat-reducer"
+import { MessageType } from "@/types"
+
+export interface ChatInputProps {
+  dispatch: React.Dispatch<ChatAction>
+}
 
 export default function ChatInput(props: ChatInputProps) {
+  const { dispatch } = props
+
   const inputRef = useRef<HTMLInputElement>(null)
 
   const [value, setValue] = useState("")
@@ -20,6 +28,13 @@ export default function ChatInput(props: ChatInputProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("form submit")
+
+    if (!value.trim()) return
+    dispatch({
+      type: "ADD_MESSAGE",
+      payload: { type: MessageType.text, text: value, createdAt: getCurrentTime(), incoming: false },
+    })
+    setValue("")
   }
   return (
     <StyledForm onSubmit={handleSubmit}>
