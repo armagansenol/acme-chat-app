@@ -11,7 +11,7 @@ export const ScrollArea = (props: ScrollAreaProps) => {
 
   return (
     <ScrollAreaRoot>
-      <ScrollAreaViewport>{children}</ScrollAreaViewport>
+      <ScrollAreaViewport asChild>{children}</ScrollAreaViewport>
       <ScrollAreaScrollbar orientation="vertical">
         <ScrollAreaThumb />
       </ScrollAreaScrollbar>
