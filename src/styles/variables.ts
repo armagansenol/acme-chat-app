@@ -3,6 +3,6 @@ import { css } from "styled-components"
 
 export const variables = css`
   :root {
-    --bg: ${grayDark.gray11};
+    --bg: ${grayDark.gray1};
   }
 `
