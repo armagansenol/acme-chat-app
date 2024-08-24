@@ -104,9 +104,16 @@ export const StyledButton = styled.button<{ $active: boolean }>`
 `
 
 export const StyledChatInputContainer = styled(Flex)`
+  flex: 1;
+  position: relative;
+`
+
+export const StyledFormContainer = styled(Flex)`
+  flex: 1;
   align-items: center;
   column-gap: ${mobileVW(20)};
   justify-content: space-between;
+  position: relative;
 
   ${desktop(css`
     column-gap: ${desktopVW(20)};
