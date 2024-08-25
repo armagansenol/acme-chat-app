@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Acme Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+**Acme Chat App** is a chat application built using modern web technologies including React, TypeScript, Vite, and Styled Components. It also leverages Radix UI for component styling and accessibility, Framer Motion for animations, and Jest for testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **React 18**: Leveraging the latest features of React.
+- **TypeScript**: Ensures type safety throughout the codebase.
+- **Vite**: A fast build tool optimized for modern web development.
+- **Styled Components**: CSS-in-JS for modular and scoped styling.
+- **Radix UI**: Accessible, unstyled components for building high-quality UIs.
+- **Framer Motion**: Provides animations and transitions.
+- **Jest**: For testing React components and logic.
+- **ESLint**: Linting for consistent and error-free code.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Ensure you have the following installed on your development machine:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Node.js**: Version 16.x or higher
+- **npm**: Version 7.x or higher (comes with Node.js)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+  Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/acme-chat-app.git
+   cd acme-chat-app
+   ```
+
+  Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+  Running the Development Server:
+
+  ```bash
+   npm run dev
+   ```
+
+### Project Structure
+
+  ├── src/
+  │   ├── components/   # React components
+  │   ├── styles/       # Styled components and global styles
+  │   ├── pages/        # Pages for routing
+  │   └── utils/        # Utility functions
+  ├── public/           # Static assets
+  ├── jest.config.js    # Jest configuration
+  ├── tsconfig.json     # TypeScript configuration
+  ├── .eslintrc.json    # ESLint configuration
+  └── vite.config.ts    # Vite configuration
