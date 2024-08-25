@@ -12,10 +12,11 @@ import { ArrowRight } from "lucide-react"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 
 import { AutoComplete } from "@/components/autocomplete"
+import { Combobox } from "@/components/combobox"
 import { Dialog } from "@/components/ui/dialog"
 import { useAutocomplete } from "@/hooks/useAutoComplete"
 import { getCurrentTime, isImageCommand } from "@/lib/utils/misc"
-import { chatPhrases } from "@/mock-data"
+import { chatPhrases, selectOptions } from "@/mock-data"
 import { ChatAction } from "@/store/reducers/chat-reducer"
 import { MessageType } from "@/types"
 
@@ -28,7 +29,7 @@ export default function ChatInput(props: ChatInputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [value, setValue] = useState("")
   const { suggestions, setSuggestions, autocomplete } = useAutocomplete(chatPhrases, 3)
-  const [isSelect, setIsSelect] = useState(false)
+  const [isSelectScreenActive, setIsSelectScreenActive] = useState(false)
 
   useEffect(() => {
     inputRef.current?.focus()
@@ -38,7 +39,7 @@ export default function ChatInput(props: ChatInputProps) {
     const value = e.target.value
 
     if (value === "/select") {
-      setIsSelect(true)
+      setIsSelectScreenActive(true)
     }
 
     setValue(value)
@@ -73,8 +74,13 @@ export default function ChatInput(props: ChatInputProps) {
 
   return (
     <StyledChatInputContainer>
-      <Dialog title="Select from below" active={isSelect} setActive={setIsSelect}>
-        <>DIALOG CONTENT</>
+      <Dialog title="Select from below" active={isSelectScreenActive} setActive={setIsSelectScreenActive}>
+        <Combobox
+          inputEl={inputRef.current}
+          setIsSelectScreenActive={setIsSelectScreenActive}
+          setSelect={setValue}
+          options={selectOptions}
+        />
       </Dialog>
       <AutoComplete inputEl={inputRef.current} setText={setValue} suggestions={suggestions} />
       <StyledForm onSubmit={handleSubmit}>

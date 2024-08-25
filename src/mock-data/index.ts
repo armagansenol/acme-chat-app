@@ -101,3 +101,26 @@ export const chatPhrases = [
   "I'll make sure it's done.",
   "Let's take it one step at a time.",
 ]
+
+export const selectOptions = [
+  { label: "Neural Network", value: "Neural Network" },
+  { label: "Machine Learning", value: "Machine Learning" },
+  { label: "Deep Learning", value: "Deep Learning" },
+  { label: "Artificial Intelligence", value: "Artificial Intelligence" },
+  { label: "Natural Language Processing", value: "Natural Language Processing" },
+  { label: "Computer Vision", value: "Computer Vision" },
+  { label: "Reinforcement Learning", value: "Reinforcement Learning" },
+  { label: "Supervised Learning", value: "Supervised Learning" },
+  { label: "Unsupervised Learning", value: "Unsupervised Learning" },
+  { label: "Robotics", value: "Robotics" },
+  { label: "Predictive Analytics", value: "Predictive Analytics" },
+  { label: "Data Mining", value: "Data Mining" },
+  { label: "Cognitive Computing", value: "Cognitive Computing" },
+  { label: "Speech Recognition", value: "Speech Recognition" },
+  { label: "Autonomous Systems", value: "Autonomous Systems" },
+  { label: "Generative AI", value: "Generative AI" },
+  { label: "Data Science", value: "Data Science" },
+  { label: "Big Data", value: "Big Data" },
+  { label: "Algorithm", value: "Algorithm" },
+  { label: "Turing Test", value: "Turing Test" },
+]

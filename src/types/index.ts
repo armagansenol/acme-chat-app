@@ -10,3 +10,8 @@ export interface MessageProps {
   createdAt: string
   incoming: boolean
 }
+
+export type Option = {
+  label: string
+  value: string
+}
