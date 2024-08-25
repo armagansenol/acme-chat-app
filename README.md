@@ -47,13 +47,15 @@ Ensure you have the following installed on your development machine:
 
 ### Project Structure
 
-  ├── src/
-  │   ├── components/   # React components
-  │   ├── styles/       # Styled components and global styles
-  │   ├── pages/        # Pages for routing
-  │   └── utils/        # Utility functions
-  ├── public/           # Static assets
-  ├── jest.config.js    # Jest configuration
-  ├── tsconfig.json     # TypeScript configuration
-  ├── .eslintrc.json    # ESLint configuration
-  └── vite.config.ts    # Vite configuration
+```text
+├── src/
+│   ├── components/   # React components
+│   ├── styles/       # Styled components and global styles
+│   ├── pages/        # Pages for routing
+│   └── utils/        # Utility functions
+├── public/           # Static assets
+├── jest.config.js    # Jest configuration
+├── tsconfig.json     # TypeScript configuration
+├── .eslintrc.json    # ESLint configuration
+└── vite.config.ts    # Vite configuration
+```
