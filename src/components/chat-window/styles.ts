@@ -8,7 +8,7 @@ import { Flex } from "@/components/ui/layout"
 export const StyledChatWindow = styled(Flex)`
   flex-direction: column;
   align-items: stretch;
-  gap: ${mobileVW(20)};
+  gap: ${mobileVW(10)};
 
   ${desktop(css`
     gap: ${desktopVW(20)};

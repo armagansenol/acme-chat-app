@@ -8,10 +8,10 @@ const $padding = 24
 
 export const StyledMessage = styled(Box)<{ $incoming: MessageProps["incoming"] }>`
   background-color: ${(props) => (props.$incoming ? grayDarkA.grayA2 : grayDarkA.grayA4)};
-  border-radius: ${mobileVW(10)};
+  border-radius: ${mobileVW(12)};
   color: var(--text-1);
   display: flex;
-  padding: ${mobileVW($padding / 2)} ${mobileVW($padding / 1.5)};
+  padding: ${mobileVW($padding / 2)};
   position: relative;
   margin-left: ${(props) => (props.$incoming ? "unset" : "auto")};
   margin-right: ${(props) => (props.$incoming ? "auto" : "unset")};
@@ -25,14 +25,16 @@ export const StyledMessage = styled(Box)<{ $incoming: MessageProps["incoming"] }
 `
 
 export const StyledImageContainer = styled(Box)`
-  border-radius: ${mobileVW(10)};
-  height: ${mobileVW(300)};
+  border-radius: ${mobileVW(8)};
+  height: ${mobileVW(150)};
   overflow: hidden;
-  width: ${mobileVW(400)};
+  margin-right: ${mobileVW(30)};
+  width: ${mobileVW(200)};
 
   ${desktop(css`
     border-radius: ${desktopVW(10)};
     height: ${desktopVW(300)};
+    margin-right: ${desktopVW(50)};
     width: ${desktopVW(400)};
   `)}
 `
@@ -49,12 +51,12 @@ export const StyledText = styled.p`
   max-width: ${mobileVW(300)};
   overflow: hidden;
   overflow-wrap: break-word;
-  padding-right: ${mobileVW(30)};
+  margin-right: ${mobileVW(30)};
 
   ${desktop(css`
     font-size: ${desktopVW(18)};
     max-width: ${desktopVW(1000)};
-    padding-right: ${desktopVW(50)};
+    margin-right: ${desktopVW(50)};
   `)}
 `
 
