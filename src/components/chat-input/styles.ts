@@ -5,6 +5,7 @@ import { Flex } from "../ui/layout"
 import { hover } from "@/styles/misc"
 
 const $inputHeight = 60
+const $inputHeightMobile = 40
 
 export const StyledForm = styled(FormPrimitive.Form)`
   flex: 1;
@@ -22,7 +23,7 @@ export const InputBase = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: ${mobileVW(20)};
+  font-size: ${mobileVW(14)};
   color: var(--text-1);
   background-color: var(--bg-2);
 
@@ -39,10 +40,10 @@ export const InputBase = css`
 export const StyledInput = styled.input`
   ${InputBase};
   border-radius: ${mobileVW(32)};
-  height: ${mobileVW($inputHeight)};
+  height: ${mobileVW($inputHeightMobile)};
   line-height: 1;
-  padding-left: ${mobileVW(30)};
-  padding-right: ${mobileVW(30)};
+  padding-left: ${mobileVW(16)};
+  padding-right: ${mobileVW(16)};
 
   ${desktop(css`
     border-radius: ${desktopVW(32)};
@@ -55,7 +56,7 @@ export const StyledInput = styled.input`
 export const StyledTextarea = styled.textarea`
   ${InputBase};
   border-radius: ${mobileVW(32)};
-  height: ${mobileVW($inputHeight)};
+  height: ${mobileVW($inputHeightMobile)};
   line-height: 1.35;
   padding-left: ${mobileVW(30)};
   padding-right: ${mobileVW(30)};
@@ -79,8 +80,8 @@ export const StyledButton = styled.button<{ $active: boolean }>`
   border-radius: 50%;
   padding: 0;
   font-size: ${mobileVW(16)};
-  height: ${mobileVW($inputHeight)};
-  width: ${mobileVW($inputHeight)};
+  height: ${mobileVW($inputHeightMobile)};
+  width: ${mobileVW($inputHeightMobile)};
   background-color: var(--bg-2);
   color: var(--text-1);
   transition: 400ms all ease;
@@ -111,7 +112,7 @@ export const StyledChatInputContainer = styled(Flex)`
 export const StyledFormContainer = styled(Flex)`
   flex: 1;
   align-items: center;
-  column-gap: ${mobileVW(20)};
+  column-gap: ${mobileVW(10)};
   justify-content: space-between;
   position: relative;
 

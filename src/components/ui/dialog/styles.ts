@@ -40,16 +40,13 @@ export const StyledDialogContent = styled(DialogPrimitive.Content)`
   `)}
 `
 export const StyledDialogTitle = styled(DialogPrimitive.Title)`
-  border-bottom: 1px solid var(--bg-3);
   color: var(--bg-1);
   font-size: ${mobileVW(18)};
-  font-weight: 500;
+  font-weight: 900;
   margin: 0;
-  padding-bottom: ${mobileVW(20)};
 
   ${desktop(css`
     font-size: ${desktopVW(18)};
-    padding-bottom: ${desktopVW(18)};
   `)}
 `
 export const StyledIconButton = styled.button`
