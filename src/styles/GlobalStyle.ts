@@ -14,6 +14,11 @@ body,
   height: 100%;
 }
 
+html,
+body {
+  overscroll-behavior: none;
+}
+
 body {
   font-family: "Inter", system-ui;
 }
