@@ -13,6 +13,10 @@ body,
 #__next {
   height: 100%;
 }
+
+body {
+  font-family: "Inter", system-ui;
+}
 `
 
 export default GlobalStyle
