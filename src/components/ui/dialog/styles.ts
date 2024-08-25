@@ -30,25 +30,26 @@ export const StyledDialogContent = styled(DialogPrimitive.Content)`
   position: fixed;
   transform: translate(-50%, -50%);
   top: 50%;
-  width: 90vw;
   &:focus {
     outline: none;
   }
 
   ${desktop(css`
     border-radius: ${desktopVW(6)};
-    max-width: ${desktopVW(450)};
     padding: ${desktopVW(25)};
   `)}
 `
 export const StyledDialogTitle = styled(DialogPrimitive.Title)`
+  border-bottom: 1px solid var(--bg-3);
   color: var(--bg-1);
   font-size: ${mobileVW(18)};
   font-weight: 500;
   margin: 0;
+  padding-bottom: ${mobileVW(20)};
 
   ${desktop(css`
     font-size: ${desktopVW(18)};
+    padding-bottom: ${desktopVW(18)};
   `)}
 `
 export const StyledIconButton = styled.button`
@@ -56,6 +57,7 @@ export const StyledIconButton = styled.button`
   align-items: center;
   border-radius: 100%;
   color: var(--bg-21);
+  cursor: pointer;
   display: inline-flex;
   font-family: inherit;
   height: ${mobileVW(25)};
