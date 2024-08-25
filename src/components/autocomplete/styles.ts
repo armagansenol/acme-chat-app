@@ -5,15 +5,10 @@ import { hover } from "@/styles/misc"
 import { desktop, desktopVW, mobileVW } from "@/styles/responsive"
 
 export const StyledAutoCompleteContainer = styled(BoxAbsolute)`
-  top: 0;
   left: 50%;
-  transform: translateY(-100%) translateX(-50%);
-  padding: ${mobileVW(10)};
-  width: 90%;
-
-  ${desktop(css`
-    padding: ${desktopVW(10)};
-  `)}
+  transform: translateY(-150%) translateX(-50%);
+  top: 0;
+  width: 100%;
 `
 
 export const StyledItemsContainer = styled(Flex)`
@@ -36,7 +31,9 @@ export const StyledItem = styled.div`
   background-color: var(--text-2);
   color: var(--bg-1);
   cursor: pointer;
+  white-space: nowrap;
   padding: ${mobileVW(10)} ${mobileVW(20)};
+  text-align: center;
   transition: 400ms all ease;
 
   ${hover(css`
