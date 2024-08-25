@@ -11,12 +11,12 @@ import * as FormPrimitive from "@radix-ui/react-form"
 import { ArrowRight } from "lucide-react"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 
-import { getCurrentTime } from "@/lib/utils/misc"
+import { AutoComplete } from "@/components/autocomplete"
+import { useAutocomplete } from "@/hooks/useAutoComplete"
+import { getCurrentTime, isImageCommand } from "@/lib/utils/misc"
+import { chatPhrases } from "@/mock-data"
 import { ChatAction } from "@/store/reducers/chat-reducer"
 import { MessageType } from "@/types"
-import { AutoComplete } from "@/components/autocomplete"
-import { chatPhrases } from "@/mock-data"
-import { useAutocomplete } from "@/hooks/useAutoComplete"
 
 export interface ChatInputProps {
   dispatch: React.Dispatch<ChatAction>
@@ -32,21 +32,33 @@ export default function ChatInput(props: ChatInputProps) {
     inputRef.current?.focus()
   }, [])
 
-  const handleValueChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  function handleValueChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
     setValue(value)
     autocomplete(value)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    console.log("form submit")
 
     if (!value.trim()) return
-    dispatch({
-      type: "ADD_MESSAGE",
-      payload: { type: MessageType.text, text: value, createdAt: getCurrentTime(), incoming: false },
-    })
+
+    if (isImageCommand(value)) {
+      dispatch({
+        type: "ADD_MESSAGE",
+        payload: {
+          type: MessageType.image,
+          imageSource: "https://picsum.photos/200",
+          createdAt: getCurrentTime(),
+          incoming: false,
+        },
+      })
+    } else {
+      dispatch({
+        type: "ADD_MESSAGE",
+        payload: { type: MessageType.text, text: value, createdAt: getCurrentTime(), incoming: false },
+      })
+    }
 
     setValue("")
     setSuggestions([])
