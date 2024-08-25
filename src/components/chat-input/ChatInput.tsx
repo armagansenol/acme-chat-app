@@ -65,7 +65,7 @@ export default function ChatInput(props: ChatInputProps) {
 
   return (
     <StyledChatInputContainer>
-      <Dialog title="Select from below" active={isSelectScreenActive} setActive={setIsSelectScreenActive}>
+      <Dialog title="Select an Option Below" active={isSelectScreenActive} setActive={setIsSelectScreenActive}>
         <Combobox
           inputEl={inputRef.current}
           setIsSelectScreenActive={setIsSelectScreenActive}
