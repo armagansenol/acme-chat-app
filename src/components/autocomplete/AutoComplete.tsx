@@ -2,6 +2,7 @@ import { StyledAutoCompleteContainer, StyledItem, StyledItemsContainer } from ".
 
 import { AnimatePresence, motion } from "framer-motion"
 import { memo } from "react"
+import { ScrollArea } from "../ui/scroll-area"
 
 interface AutoCompleteProps {
   inputEl?: HTMLInputElement | null
@@ -19,19 +20,21 @@ const AutoComplete = memo((props: AutoCompleteProps) => {
 
   return (
     <StyledAutoCompleteContainer>
-      <AnimatePresence>
-        {suggestions.length !== 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <StyledItemsContainer>
-              {suggestions.map((item, i) => (
-                <StyledItem key={i} onClick={() => handleSelect(item)}>
-                  {item}
-                </StyledItem>
-              ))}
-            </StyledItemsContainer>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <ScrollArea type="always">
+        <AnimatePresence>
+          {suggestions.length !== 0 && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <StyledItemsContainer>
+                {suggestions.map((item, i) => (
+                  <StyledItem key={i} onClick={() => handleSelect(item)}>
+                    {item}
+                  </StyledItem>
+                ))}
+              </StyledItemsContainer>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </ScrollArea>
     </StyledAutoCompleteContainer>
   )
 })
