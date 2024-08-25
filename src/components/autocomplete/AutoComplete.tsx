@@ -12,6 +12,11 @@ interface AutoCompleteProps {
 const AutoComplete = memo((props: AutoCompleteProps) => {
   const { suggestions, setText, inputEl } = props
 
+  function handleSelect(val: string) {
+    setText(val)
+    inputEl?.focus()
+  }
+
   return (
     <StyledAutoCompleteContainer>
       <AnimatePresence>
@@ -19,13 +24,7 @@ const AutoComplete = memo((props: AutoCompleteProps) => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <StyledItemsContainer>
               {suggestions.map((item, i) => (
-                <StyledItem
-                  key={i}
-                  onClick={() => {
-                    setText(item)
-                    inputEl?.focus()
-                  }}
-                >
+                <StyledItem key={i} onClick={() => handleSelect(item)}>
                   {item}
                 </StyledItem>
               ))}
