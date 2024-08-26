@@ -1,6 +1,7 @@
 export enum MessageType {
   image = "image",
   text = "text",
+  options = "options",
 }
 
 export interface MessageProps {

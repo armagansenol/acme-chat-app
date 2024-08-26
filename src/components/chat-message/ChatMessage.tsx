@@ -1,6 +1,8 @@
+import { selectOptions } from "@/mock-data"
 import { StyledImage, StyledImageContainer, StyledMessage, StyledText, StyledTime } from "./styles"
 
 import { MessageProps } from "@/types"
+import { Combobox } from "@/components/combobox"
 
 const ChatMessage = (props: MessageProps) => {
   const { createdAt, imageSource, incoming, text, type } = props
@@ -12,6 +14,7 @@ const ChatMessage = (props: MessageProps) => {
       </StyledImageContainer>
     ),
     text: <StyledText>{text}</StyledText>,
+    options: <Combobox options={selectOptions} />,
   }
 
   return (
