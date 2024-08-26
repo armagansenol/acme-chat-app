@@ -41,6 +41,7 @@ export const ScrollAreaThumb = styled(ScrollAreaPrimitive.Thumb)`
   position: relative;
   &::before {
     content: ".";
+    content-visibility: hidden;
     position: absolute;
     top: 50%;
     left: 50%;
