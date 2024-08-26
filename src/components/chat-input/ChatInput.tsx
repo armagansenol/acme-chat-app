@@ -12,13 +12,10 @@ import { ArrowRight } from "lucide-react"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 
 import { AutoComplete } from "@/components/autocomplete"
-import { Combobox } from "@/components/combobox"
-import { Dialog } from "@/components/ui/dialog"
-import { useAutocomplete } from "@/hooks/useAutoComplete"
-import useMessagePayload from "@/hooks/useMessagePayload"
-import { isImageCommand } from "@/lib/utils/misc"
-import { chatPhrases, selectOptions } from "@/mock-data"
-import { ChatAction } from "@/store/reducers/chat-reducer"
+import { chatPhrases } from "@/mock-data"
+import { ChatAction } from "@/store/context/chat/reducers"
+import { useMessagePayload } from "@/store/context/chat/hooks/use-message-payload"
+import { useAutocomplete } from "@/hooks/use-auto-complete"
 
 export interface ChatInputProps {
   dispatch: React.Dispatch<ChatAction>
@@ -26,13 +23,13 @@ export interface ChatInputProps {
 
 export default function ChatInput(props: ChatInputProps) {
   const { dispatch } = props
+  const [inputValue, setInputValue] = useState("")
+
   const inputRef = useRef<HTMLInputElement>(null)
-  const [value, setValue] = useState("")
   const { suggestions, setSuggestions, autocomplete } = useAutocomplete(chatPhrases, 3)
-  const [isSelectScreenActive, setIsSelectScreenActive] = useState(false)
-  const { createTextMessage, createImageMessage } = useMessagePayload({
+
+  const { createTextMessage, createOptionsMessage } = useMessagePayload({
     type: "ADD_MESSAGE",
-    incoming: false,
   })
 
   useEffect(() => {
@@ -41,48 +38,40 @@ export default function ChatInput(props: ChatInputProps) {
 
   function handleValueChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
-    setValue(value)
+    setInputValue(value)
     autocomplete(value)
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!value.trim()) return
+    if (!inputValue.trim()) return
 
-    if (value === "/select") {
-      return setIsSelectScreenActive(true)
+    if (inputValue === "/select") {
+      const messagePayload = createOptionsMessage(true)
+      dispatch(messagePayload)
+      setInputValue("")
+      return
     }
 
-    const messagePayload = isImageCommand(value)
-      ? createImageMessage("https://picsum.photos/200")
-      : createTextMessage(value)
-
+    const messagePayload = createTextMessage(inputValue, false)
     dispatch(messagePayload)
 
-    setValue("")
+    setInputValue("")
     setSuggestions([])
   }
 
   return (
     <StyledChatInputContainer>
-      <Dialog title="Select an Option Below" active={isSelectScreenActive} setActive={setIsSelectScreenActive}>
-        <Combobox
-          inputEl={inputRef.current}
-          setIsSelectScreenActive={setIsSelectScreenActive}
-          setSelect={setValue}
-          options={selectOptions}
-        />
-      </Dialog>
-      <AutoComplete inputEl={inputRef.current} setText={setValue} suggestions={suggestions} />
+      <AutoComplete inputEl={inputRef.current} setText={setInputValue} suggestions={suggestions} />
       <StyledForm onSubmit={handleSubmit}>
         <StyledFormContainer>
           <StyledFormField name="prompt">
-            <FormPrimitive.Control asChild value={value} onChange={handleValueChange}>
+            <FormPrimitive.Control asChild value={inputValue} onChange={handleValueChange}>
               <StyledInput type="text" required placeholder="Message Acme Chat" ref={inputRef} />
             </FormPrimitive.Control>
           </StyledFormField>
           <FormPrimitive.Submit asChild>
-            <StyledButton $active={value !== ""}>
+            <StyledButton $active={inputValue !== ""}>
               <ArrowRight />
             </StyledButton>
           </FormPrimitive.Submit>

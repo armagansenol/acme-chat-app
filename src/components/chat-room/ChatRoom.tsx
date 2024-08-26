@@ -9,27 +9,37 @@ import {
 import { ChatInput } from "@/components/chat-input"
 import { ChatWindow } from "@/components/chat-window"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import useMessagePayload from "@/hooks/useMessagePayload"
-import { useChatReducer } from "@/store/reducers/chat-reducer"
+import { isImageCommand } from "@/lib/utils/misc"
+import { useChat } from "@/store/context/chat/hooks/use-chat"
+import { useMessagePayload } from "@/store/context/chat/hooks/use-message-payload"
+
 import { useEffect, useRef } from "react"
 
 export default function ChatRoom() {
-  const [state, dispatch] = useChatReducer()
-
-  const initialized = useRef(false)
-  const { createTextMessage } = useMessagePayload({
+  const { state, dispatch } = useChat()
+  const { createTextMessage, createImageMessage } = useMessagePayload({
     type: "ADD_MESSAGE",
-    incoming: true,
   })
 
+  // initial message
+  const initialized = useRef(false)
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true
 
-      const messagePayload = createTextMessage("Welcome to Acme Chat!")
-      dispatch(messagePayload)
+      dispatch(createTextMessage("Welcome to Acme Chat!", true))
     }
   }, [createTextMessage, dispatch])
+
+  useEffect(() => {
+    const lastMessage = state.messages.at(-1)
+
+    if (typeof lastMessage?.text !== "string") return
+
+    if (isImageCommand(lastMessage.text) && !lastMessage.incoming) {
+      dispatch(createImageMessage("https://picsum.photos/200", true))
+    }
+  }, [state.messages, createImageMessage, dispatch])
 
   return (
     <StyledChatRoom>

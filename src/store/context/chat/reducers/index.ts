@@ -1,7 +1,6 @@
 import { MessageProps } from "@/types"
-import { useReducer } from "react"
 
-interface ChatState {
+export interface ChatState {
   messages: MessageProps[]
 }
 
@@ -24,8 +23,4 @@ export const reducer = (state: ChatState, action: ChatAction): ChatState => {
     default:
       return state
   }
-}
-
-export function useChatReducer() {
-  return useReducer(reducer, initialState)
 }

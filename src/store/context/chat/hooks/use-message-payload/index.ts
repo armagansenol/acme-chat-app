@@ -1,16 +1,16 @@
-import { useMemo } from "react"
-import { MessageType } from "@/types"
 import { getCurrentTime } from "@/lib/utils/misc"
+import { selectOptions } from "@/mock-data"
+import { MessageType } from "@/types"
+import { useMemo } from "react"
 
 interface UseMessagePayloadArgs {
   type: "ADD_MESSAGE"
-  incoming: boolean
 }
 
-const useMessagePayload = ({ type, incoming }: UseMessagePayloadArgs) => {
+export function useMessagePayload({ type }: UseMessagePayloadArgs) {
   const createPayload = useMemo(
     () => ({
-      createTextMessage(text: string) {
+      createTextMessage(text: string, incoming: boolean) {
         return {
           type,
           payload: {
@@ -22,7 +22,7 @@ const useMessagePayload = ({ type, incoming }: UseMessagePayloadArgs) => {
         }
       },
 
-      createImageMessage(imageSource: string) {
+      createImageMessage(imageSource: string, incoming: boolean) {
         return {
           type,
           payload: {
@@ -33,11 +33,21 @@ const useMessagePayload = ({ type, incoming }: UseMessagePayloadArgs) => {
           },
         }
       },
+
+      createOptionsMessage(incoming: boolean) {
+        return {
+          type,
+          payload: {
+            type: MessageType.options,
+            createdAt: getCurrentTime(),
+            incoming,
+            options: selectOptions,
+          },
+        }
+      },
     }),
-    [type, incoming]
+    [type]
   )
 
   return createPayload
 }
-
-export default useMessagePayload

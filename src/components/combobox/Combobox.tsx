@@ -1,35 +1,34 @@
+import { useChat } from "@/store/context/chat/hooks/use-chat"
 import { StyledCombobox, StyledOption, StyledOptionsContainer } from "./styles"
 
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Option } from "@/types"
+import { useMessagePayload } from "@/store/context/chat/hooks/use-message-payload"
 
 export interface ComboboxProps {
-  inputEl?: HTMLInputElement | null
   options: Option[]
-  setSelect: (val: string) => void
-  setIsSelectScreenActive: (val: boolean) => void
 }
 
 export default function Combobox(props: ComboboxProps) {
-  const { inputEl, setIsSelectScreenActive, setSelect, options } = props
+  const { options } = props
+  const { dispatch } = useChat()
+
+  const { createTextMessage } = useMessagePayload({
+    type: "ADD_MESSAGE",
+  })
 
   function handleSelect(value: Option["value"]) {
-    setSelect(value)
-    setIsSelectScreenActive(false)
-    inputEl?.focus()
+    dispatch(createTextMessage(value, false))
   }
 
   return (
     <StyledCombobox>
-      <ScrollArea type="always">
-        <StyledOptionsContainer>
-          {options.map((item, i) => (
-            <StyledOption key={i} onClick={() => handleSelect(item.value)}>
-              {item.label}
-            </StyledOption>
-          ))}
-        </StyledOptionsContainer>
-      </ScrollArea>
+      <StyledOptionsContainer>
+        {options.map((item, i) => (
+          <StyledOption key={i} onClick={() => handleSelect(item.value)}>
+            {item.label}
+          </StyledOption>
+        ))}
+      </StyledOptionsContainer>
     </StyledCombobox>
   )
 }
