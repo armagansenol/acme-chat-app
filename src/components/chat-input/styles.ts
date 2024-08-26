@@ -23,7 +23,7 @@ export const InputBase = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: ${mobileVW(14)};
+  font-size: ${mobileVW(16)};
   color: var(--text-1);
   background-color: var(--bg-2);
 
