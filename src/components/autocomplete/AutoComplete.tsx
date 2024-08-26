@@ -2,7 +2,8 @@ import { StyledAutoCompleteContainer, StyledItem, StyledItemsContainer } from ".
 
 import { AnimatePresence, motion } from "framer-motion"
 import { memo } from "react"
-import { ScrollArea } from "../ui/scroll-area"
+
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 interface AutoCompleteProps {
   inputEl?: HTMLInputElement | null

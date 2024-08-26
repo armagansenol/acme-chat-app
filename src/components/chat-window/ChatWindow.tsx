@@ -3,7 +3,7 @@ import { StyledChatWindow, StyledMessageContainer } from "./styles"
 import { AnimatePresence } from "framer-motion"
 
 import { ChatMessage } from "@/components/chat-message"
-import { useScrollToElement } from "@/hooks/useScroll"
+import { useScrollToElement } from "@/hooks/use-scroll-to-element"
 import { MessageProps } from "@/types"
 
 export interface ChatWindowProps {
