@@ -51,7 +51,6 @@ Ensure you have the following installed on your development machine:
 ├── src/
 │   ├── components/   # React components
 │   ├── styles/       # Styled components and global styles
-│   ├── pages/        # Pages for routing
 │   └── utils/        # Utility functions
 ├── public/           # Static assets
 ├── jest.config.js    # Jest configuration
