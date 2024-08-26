@@ -22,7 +22,7 @@ export const StyledChatWindowContainer = styled(Flex)`
 
   ${desktop(css`
     padding: ${desktopVW(50)};
-    padding-bottom: 0;
+    padding-bottom: ${desktopVW(30)};
   `)}
 `
 export const StyledOverflowMask = styled(Flex)`
