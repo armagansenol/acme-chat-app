@@ -1,8 +1,8 @@
-import { useChat } from "@/store/context/chat/hooks/use-chat"
+import { useChat } from "@/store/chat/hooks/use-chat"
 import { StyledCombobox, StyledOption, StyledOptionsContainer } from "./styles"
 
 import { Option } from "@/types"
-import { useMessagePayload } from "@/store/context/chat/hooks/use-message-payload"
+import { useMessagePayload } from "@/store/chat/hooks/use-message-payload"
 
 export interface ComboboxProps {
   options: Option[]

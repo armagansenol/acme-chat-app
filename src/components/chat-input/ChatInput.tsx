@@ -13,8 +13,8 @@ import { ChangeEvent, useEffect, useRef, useState } from "react"
 
 import { AutoComplete } from "@/components/autocomplete"
 import { chatPhrases } from "@/mock-data"
-import { ChatAction } from "@/store/context/chat/reducers"
-import { useMessagePayload } from "@/store/context/chat/hooks/use-message-payload"
+import { ChatAction } from "@/store/chat/reducers"
+import { useMessagePayload } from "@/store/chat/hooks/use-message-payload"
 import { useAutocomplete } from "@/hooks/use-auto-complete"
 
 export interface ChatInputProps {

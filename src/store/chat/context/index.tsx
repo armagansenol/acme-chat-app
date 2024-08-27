@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useReducer } from "react"
-import { ChatAction, ChatState, initialState, reducer } from "./reducers"
+import { ChatAction, ChatState, initialState, reducer } from "../reducers"
 
 export interface ChatContextType {
   state: ChatState

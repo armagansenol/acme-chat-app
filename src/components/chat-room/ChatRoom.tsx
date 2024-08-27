@@ -10,8 +10,8 @@ import { ChatInput } from "@/components/chat-input"
 import { ChatWindow } from "@/components/chat-window"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { isImageCommand } from "@/lib/utils/misc"
-import { useChat } from "@/store/context/chat/hooks/use-chat"
-import { useMessagePayload } from "@/store/context/chat/hooks/use-message-payload"
+import { useChat } from "@/store/chat/hooks/use-chat"
+import { useMessagePayload } from "@/store/chat/hooks/use-message-payload"
 
 import { useEffect, useRef } from "react"
 

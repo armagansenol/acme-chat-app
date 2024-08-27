@@ -1,5 +1,5 @@
 import { ChatRoom } from "@/components/chat-room"
-import { ChatProvider } from "./store/context/chat"
+import { ChatProvider } from "./store/chat/context"
 import { GlobalStyle } from "./styles"
 
 function App() {
