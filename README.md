@@ -14,6 +14,9 @@
 - **Framer Motion**: Provides animations and transitions.
 - **Jest**: For testing React components and logic.
 - **ESLint**: Linting for consistent and error-free code.
+- **State Management**: Since there's no complex state management involved useReducer and useContext hooks are used for state management.
+
+
 
 ## Getting Started
 
@@ -45,16 +48,33 @@ Ensure you have the following installed on your development machine:
    npm run dev
    ```
 
+  Building for deployment:
+
+  ```bash
+   npm run build
+   ```
+
 ### Project Structure
 
 ```text
 ├── src/
 │   ├── components/   # React components
+│   ├── hooks/        # Reusable react hooks
 │   ├── styles/       # Styled components and global styles
-│   └── utils/        # Utility functions
+│   └── lib/utils/    # Utility functions
+│   └── store/        # State management
+│   └── types/        # Global types
 ├── public/           # Static assets
 ├── jest.config.js    # Jest configuration
 ├── tsconfig.json     # TypeScript configuration
 ├── .eslintrc.json    # ESLint configuration
 └── vite.config.ts    # Vite configuration
 ```
+
+### TO DO
+
+- Expand the input area when a new line is added.
+- Show a loading spinner when images etc. are being loaded.
+- Implement a design system.
+- Add a debounce feature to the autocomplete mechanism.
+- Add container structure and media queries for large screens.
